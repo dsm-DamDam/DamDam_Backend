@@ -1,13 +1,25 @@
-from typing import Optional
-
+from fastapi.middleware.cors import CORSMiddleware
 from fastapi import FastAPI
+import uvicorn
+from app.core.config import settings
+from app.user.user_router import router as user_router
 
-app = FastAPI()
+app = FastAPI(title=settings.APP_NAME, debug=settings.DEBUG, version='1.0.0')
+app.include_router(user_router, prefix="/user", tags=["users"])
 
-@app.get("/")
-def read_root():
-    return {"Hello": "World"}
+origins = ["*"]
 
-@app.get("/items/{item_id}")
-def read_item(item_id: int, q: Optional[str] = None):
-    return {"item_id": item_id, "q": q}
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=origins,
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
+
+@app.get('/')
+async def test():
+    return 'Server is Working!'
+
+if __name__ == '__main__':
+    uvicorn.run("main:app", reload=True)
