@@ -1,5 +1,5 @@
-from app.user.models import User
-from app.database.session import SessionLocal
+from database.models import User
+from database.session import SessionLocal
 
 def generate_verification_code():
     # 여기에서 이메일 인증 코드를 생성하는 로직을 작성

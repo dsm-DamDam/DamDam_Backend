@@ -1,11 +1,11 @@
-from pydantic import BaseSettings
+from pydantic_settings import BaseSettings
 
 class Settings(BaseSettings):
     APP_NAME: str = "DamDam-App"
     DEBUG: bool = False
-    DB_USER: str
-    DB_PASSWORD: str
-    DB_HOST: str
-    DB_NAME: str
+    DB_USER: str = "default_user"
+    DB_PASSWORD: str = "default_password"
+    DB_HOST: str = "localhost"
+    DB_NAME: str = "default_database"
 
 settings = Settings()

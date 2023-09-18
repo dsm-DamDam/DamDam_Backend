@@ -28,11 +28,9 @@ myapp/
 │   │   ├── session.py
 │   │   ├── models.py
 │   ├── main.py
-│   ├── middleware.py
 ├── tests/
 │   ├── __init__.py
 │   ├── test_main.py
 ├── .env
-├── .env.example
 ├── pyproject.toml
 └── README.md
