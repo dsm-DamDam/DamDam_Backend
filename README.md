@@ -1,7 +1,9 @@
 # DamDam_Backend
 
-## architecture
+## Directory structure
 
+
+```
 myapp/
 ├── app/
 │   ├── __init__.py
