@@ -6,6 +6,15 @@ class VerificationRequest(BaseModel):
     email: constr()
     verification_code: constr()
 
+class User(BaseModel):
+    id: constr()
+    nickname: constr()
+    email: constr()
+    password: constr()
+
+    class Config:
+        orm_mode = True
+
 class SignUp(BaseModel):
     nickname: constr()
     email: constr()
