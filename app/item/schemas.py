@@ -6,3 +6,6 @@ class HW(BaseModel):
 class daily_count(BaseModel):
     day : str
     count : int
+
+class CountCreate(BaseModel):
+    count: int
