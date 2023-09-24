@@ -7,5 +7,6 @@ class Settings(BaseSettings):
     DB_PASSWORD: str = "default_password"
     DB_HOST: str = "localhost"
     DB_NAME: str = "default_database"
+    DB_PORT: int = 3306
 
 settings = Settings()
