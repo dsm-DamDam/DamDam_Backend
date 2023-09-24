@@ -1,5 +1,5 @@
 from fastapi.middleware.cors import CORSMiddleware
-from fastapi import FastAPI
+from fastapi import FastAPI, Depends, HTTPException, Request
 import uvicorn
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
@@ -37,4 +37,4 @@ async def test():
     return 'Server is Working!'
 
 if __name__ == '__main__':
-    uvicorn.run("main:app", port=8080,reload=True)
+    uvicorn.run("main:app", host='172.20.10.4',port=8080,reload=True)
