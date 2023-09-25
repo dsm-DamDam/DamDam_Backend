@@ -2,7 +2,8 @@ from database.models import User, Auth
 from passlib.context import CryptContext
 from database.session import SessionLocal
 
-bcrypt_context = CryptContext(schemes=['bcrypt'], deprecated="auto")
+
+pwd_context = CryptContext(schemes=['bcrypt'], deprecated="auto")
 
 def get_user_by_id(db: SessionLocal, id: int):
     return db.query(User).filter(User.id == id).first()
@@ -14,8 +15,11 @@ def create_user(db:SessionLocal ,auth_code : int , email : str, userID : str, pa
     db.refresh(new_user)
     return new_user
 
+def get_user(db: SessionLocal, userID : str):
+    return db.query(User).filter(User.userID == userID).first()
+
 def hash_password(password):
-    return bcrypt_context.hash(password)
+    return pwd_context.hash(password)
 
 def get_user_by_userID(db:SessionLocal, userID : str):
     return db.query(User).filter(User.userID == userID).first()
