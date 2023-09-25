@@ -1,9 +1,9 @@
-from pydantic import BaseModel, constr
+from pydantic import BaseModel
 
 class Token(BaseModel):
-    access_token: str
-    token_type: str
-    id : int
+    access_token : str
+    token_type : str
+    id : int 
 
 class updatePW(BaseModel):
     id : int
@@ -17,10 +17,6 @@ class updateInfo(BaseModel):
     new_userID : str
     new_email : str
     password : str
-
-class VerificationRequest(BaseModel):
-    email: constr()
-    verification_code: constr()
 
 class User(BaseModel):
     userID: str
