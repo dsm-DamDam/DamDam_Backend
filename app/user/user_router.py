@@ -4,9 +4,13 @@ from database.session import get_db
 from user import user_service, schemas
 from database.models import User
 from .schemas import SignUp, Login, updatePW
+from datetime import datetime, timedelta
+from core.security import SECRET_KEY, ACCESS_TOKEN_EXPIRE_MINUTES, ALGORITHM
+from jose import jwt
 import re
 
 router = APIRouter()
+
 
 @router.post("/sign")
 async def signup(user: SignUp, db: Session = Depends(get_db)):
@@ -30,13 +34,22 @@ async def signup(user: SignUp, db: Session = Depends(get_db)):
     user_service.create_user(db,user.auth_code , user.email, user.userID, user.password, user.nickname)
     return {"detail":"회원가입이 성공적으로 완료되었습니다"}
 
-@router.post("/login")
+@router.post("/login", response_model=schemas.Token)
 def login(user: Login, db: Session = Depends(get_db)):
     # 사용자 인증 및 로그인 처리
     user_in_db = db.query(User).filter(User.userID == user.userID, User.password == user.password).first()
     if not user_in_db:
         raise HTTPException(status_code=401, detail="로그인 실패: 잘못된 사용자 이름 또는 비밀번호")
-    return {"detail": "로그인이 성공적으로 완료되었습니다."}
+    
+    user_data = user_service.get_user(db, user.userID)
+
+    data = {
+        "sub": user_data.id,
+        "exp": datetime.utcnow() + timedelta(minutes=ACCESS_TOKEN_EXPIRE_MINUTES)
+    }
+    access_token = jwt.encode(data, SECRET_KEY, algorithm=ALGORITHM)
+    return {"access_token": access_token,"token_type": "bearer","username": user_data.id}, {"detail": "로그인이 성공적으로 완료되었습니다."}
+
 
 @router.delete("/logout")
 async def logout():
