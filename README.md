@@ -1,33 +1,5 @@
 # DamDam_Backend
 
-## Directory structure
-```
-DAMDAM_BACKEND/
-├── app/
-│   ├── core/
-│   │   ├── __init__.py
-│   │   ├── config.py
-│   │   ├── security.py
-│   ├── item/
-│   │   ├── __init__.py
-│   │   ├── item_router.py
-│   │   ├── item_service.py
-│   │   ├── schemas.py
-│   ├── user/
-│   │   ├── __init__.py
-│   │   ├── user_router.py
-│   │   ├── user_service.py
-│   │   ├── schemas.py
-│   ├── database/
-│   │   ├── __init__.py
-│   │   ├── session.py
-│   │   ├── models.py
-│   ├── __init__.py
-│   ├── main.py
-├── .env
-└── README.md
-
-
 ## Commit Rule
 
 | 이모지 | 설명 |
@@ -66,3 +38,31 @@ DAMDAM_BACKEND/
 | :card_file_box: | 데이터베이스 관련 수정 |
 | :loud_sound: | 로그 추가/수정 |
 | :see_no_evil: | .gitignore 추가/수정 |
+
+## Directory structure
+
+```
+DAMDAM_BACKEND/
+├── app/
+│   ├── core/
+│   │   ├── __init__.py
+│   │   ├── config.py
+│   │   ├── security.py
+│   ├── item/
+│   │   ├── __init__.py
+│   │   ├── item_router.py
+│   │   ├── item_service.py
+│   │   ├── schemas.py
+│   ├── user/
+│   │   ├── __init__.py
+│   │   ├── user_router.py
+│   │   ├── user_service.py
+│   │   ├── schemas.py
+│   ├── database/
+│   │   ├── __init__.py
+│   │   ├── session.py
+│   │   ├── models.py
+│   ├── __init__.py
+│   ├── main.py
+├── .env
+└── README.md
