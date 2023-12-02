@@ -9,9 +9,9 @@ class User(Base):
     __tablename__ = "users"
 
     id = Column(Integer, primary_key=True, index=True,autoincrement=True)
-    userID = Column(String(20), unique = True, index=True)
-    email = Column(String(50), unique=True, index=True)
-    nickname = Column(String(10))
+    userID = Column(String(20))
+    email = Column(String(50), unique = True, index = True)
+    nickname = Column(String(20))
     password = Column(String(30))
 
 class Count(Base):
