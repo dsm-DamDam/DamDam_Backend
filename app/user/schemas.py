@@ -5,27 +5,28 @@ class Token(BaseModel):
     token_type : str
     id : int 
 
-class updatePW(BaseModel):
+class TokenData(BaseModel):
     id : int
+
+class updatePW(BaseModel):
     password : str
     change_password : str
     confirm_change_password : str
 
 class updateInfo(BaseModel):
-    id : int
     new_nickname : str
     new_userID : str
-    new_email : str
-    password : str
 
 class User(BaseModel):
     userID: str
     nickname: str
     email: str
-    password: str
 
     class Config:
         from_attributes = True
+
+class Auth(BaseModel):
+    auth_code : int
 
 class SignUp(BaseModel):
     auth_code : int
